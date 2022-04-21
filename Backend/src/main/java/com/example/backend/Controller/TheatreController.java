@@ -23,4 +23,10 @@ public class TheatreController {
     public boolean add(@RequestBody Theatre theatre) {
         return theatreService.addTheatre(theatre);
     }
+    @RequestMapping("/getTheatre/{locationid}/{movieid}")
+	public List<Theatre> getAllTheatre(@PathVariable int locationid,@PathVariable int movieid)
+	{
+		List<Theatre> theatres=theatreService.findTheatreByMovieandLocation(locationid, movieid);
+		return theatres;
+	}
 }

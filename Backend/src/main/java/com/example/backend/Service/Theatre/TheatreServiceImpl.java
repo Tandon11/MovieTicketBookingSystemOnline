@@ -18,7 +18,7 @@ public class TheatreServiceImpl implements TheatreService {
     }
 
     public boolean addTheatre(Theatre theatre) {
-        Integer count = theatreRepository.findCountOfTheatre(theatre.getTheatre_name());
+        Integer count = theatreRepository.findCountOfTheatre(theatre.getTheatreName());
         if(count > 0)
             return false;
         else {
@@ -27,7 +27,10 @@ public class TheatreServiceImpl implements TheatreService {
         }
     }
 
-    public void addShow(Integer theatreid) {
-        theatreRepository.updateShow(theatreid);
+   
+    public List<Theatre> findTheatreByMovieandLocation(int locationid,int movieid)
+    {
+    	List<Theatre> theatre=theatreRepository.findByMoviedandLocation(locationid,movieid);
+    	return theatre;
     }
 }

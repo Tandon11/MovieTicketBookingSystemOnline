@@ -19,9 +19,9 @@ public class ShowController {
         return showService.listAllShows();
     }
 
-    @GetMapping("/shows/getbyid/{locationid}")
-    public List<Shows> showById(@PathVariable Integer locationid){
-        return showService.showsById(locationid);
+    @GetMapping("/shows/getbyid/{TheatreId}/{MovieId}")
+    public List<Shows> showById(@PathVariable Integer TheatreId,@PathVariable Integer MovieId){
+        return showService.showsById(TheatreId,MovieId);
 
     }
     @PostMapping("/shows/add")

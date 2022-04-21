@@ -1,79 +1,80 @@
 package com.example.backend.Model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "theatredetails")
 public class Theatre {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer theatreid;
-    private String theatre_name;
-    private Integer shows = 0;
-    private String area;
-    private String cast;
-    private String bannerimage;
+	
 
-    public Theatre() {
-    }
+	private int theatreId;
+	
+	
+	private int locationId;
+	
+	@Column(name = "TheatreName")
+	private String theatreName;
+	
+	
+	private int MovieID;
+	public Theatre() {
+		super();
+	}
+	
+	public Theatre(int theatreId, int locationId, String theatreName,int MovieID) {
+		super();
+		this.theatreId = theatreId;
+		this.locationId = locationId;
+		this.theatreName = theatreName;
+		this.MovieID=MovieID;
+	}
 
-    public Theatre(Integer theatreid, String theatre_name, Integer shows, String area, String cast, String bannerimage) {
-        this.theatreid = theatreid;
-        this.theatre_name = theatre_name;
-        this.shows = shows;
-        this.area = area;
-        this.cast = cast;
-        this.bannerimage = bannerimage;
-    }
+	public int getTheatreId() {
+		return theatreId;
+	}
 
-    public Integer getTheatreid() {
-        return theatreid;
-    }
+	public void setTheatreId(int theatreId) {
+		this.theatreId = theatreId;
+	}
 
-    public void setTheatreid(Integer theatreid) {
-        this.theatreid = theatreid;
-    }
+	public int getLocationId() {
+		return locationId;
+	}
 
-    public String getTheatre_name() {
-        return theatre_name;
-    }
+	public void setLocationId(int locationId) {
+		this.locationId = locationId;
+	}
 
-    public void setTheatre_name(String theatre_name) {
-        this.theatre_name = theatre_name;
-    }
+	public String getTheatreName() {
+		return theatreName;
+	}
 
-    public Integer getShows() {
-        return shows;
-    }
+	public void setTheatreName(String theatreName) {
+		this.theatreName = theatreName;
+	}
 
-    public void setShows(Integer shows) {
-        this.shows = shows;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public String getArea() {
-        return area;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public void setArea(String area) {
-        this.area = area;
-    }
+	public int getMovieID() {
+		return MovieID;
+	}
 
-    public String getCast() {
-        return cast;
-    }
+	public void setMovieID(int movieID) {
+		MovieID = movieID;
+	}
+	
 
-    public void setCast(String cast) {
-        this.cast = cast;
-    }
-
-    public String getBannerimage() {
-        return bannerimage;
-    }
-
-    public void setBannerimage(String bannerimage) {
-        this.bannerimage = bannerimage;
-    }
 }

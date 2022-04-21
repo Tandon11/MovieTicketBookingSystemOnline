@@ -22,8 +22,7 @@ public class BookingServiceImpl implements BookingService {
     @Autowired
     private SeatService seatService;
 
-    @Autowired
-    private TheatreService theatreService;
+ 
 
     @Autowired
     private ShowService showService;
@@ -58,7 +57,7 @@ public class BookingServiceImpl implements BookingService {
         currBooking.setCost(String.valueOf(cost));
 
         bookingRepository.save(currBooking);
-        showService.rollbackShow(currBooking.getShowid());
+     //   showService.rollbackShow(currBooking.getShowid());
         return true;
     }
 

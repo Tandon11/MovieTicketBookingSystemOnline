@@ -19,21 +19,20 @@ public class ShowServiceImpl implements ShowService {
     @Autowired
     private TheatreRepository theatreRepository;
 
-    @Autowired
-    private TheatreService theatreService;
+  
 
     public List<Shows> listAllShows() {
         return showRepository.findAll();
     }
 
     public boolean addShow(Shows show) {
-        if(theatreRepository.existsById(show.getLocationid())) {
+        if(theatreRepository.existsById(show.getTheatreId())){
             if(showRepository.existsById(show.getShowid())) {
                 return false;
             }
             else{
                 showRepository.save(show);
-                theatreService.addShow(show.getLocationid());
+                
                 return true;
             }
         }
@@ -42,15 +41,15 @@ public class ShowServiceImpl implements ShowService {
         }
     }
 
-    public List<Shows> showsById(Integer locationid) {
-        return showRepository.showById(locationid);
+    public List<Shows> showsById(Integer TheatreId,Integer movieId) {
+        return showRepository.showByMovieandLocationId(TheatreId,movieId);
     }
 
-    public void updateShow(Booking booking) {
-        showRepository.updateShow(1, booking.getTime(), booking.getTicketCount(), booking.getShowid());
-    }
+   // public void updateShow(Booking booking) {
+   //     showRepository.updateShow(1, booking.getTime(), booking.getTicketCount(), booking.getShowid());
+   // }
 
-    public void rollbackShow(String showid) {
-        showRepository.rollbackShow(showid);
-    }
+  //  public void rollbackShow(String showid) {
+  //      showRepository.rollbackShow(showid);
+  //  }
 }
