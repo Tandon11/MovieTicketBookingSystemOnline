@@ -11,6 +11,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Order {
+	
+	//just to check
 
 	private double price;
 	private String currency;
