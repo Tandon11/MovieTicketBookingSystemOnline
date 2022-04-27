@@ -19,26 +19,18 @@ public class ShowServiceImpl implements ShowService {
     @Autowired
     private TheatreRepository theatreRepository;
 
-  
-
     public List<Shows> listAllShows() {
         return showRepository.findAll();
     }
 
     public boolean addShow(Shows show) {
         if(theatreRepository.existsById(show.getTheatreId())){
-            if(showRepository.existsById(show.getShowid())) {
-                return false;
-            }
-            else{
-                showRepository.save(show);
-                
-                return true;
-            }
+            System.out.println(theatreRepository.existsById(show.getTheatreId()));
+            showRepository.save(show);
+            return true;
         }
-        else{
+        else
             return false;
-        }
     }
 
     public List<Shows> showsById(Integer TheatreId,Integer movieId) {

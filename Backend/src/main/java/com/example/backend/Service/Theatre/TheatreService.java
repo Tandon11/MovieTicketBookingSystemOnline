@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface TheatreService {
     public List<Theatre> listAllTheatre();
-    public boolean addTheatre(Theatre theatre);
+    public void addTheatre(Theatre theatre);
   
-    public List<Theatre> findTheatreByMovieandLocation(int locationid,int movieid);
+    public List<Theatre> findTheatreByMovieandLocation(int locationId,int movieid);
 }

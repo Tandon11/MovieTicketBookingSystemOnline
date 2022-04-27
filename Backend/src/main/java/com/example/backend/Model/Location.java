@@ -7,45 +7,33 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="locationdetails")
 public class Location {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="LocationID")
-	private int locationId;
-	
-	@Column(name="LocationName")
-	private String locationName;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int location_id;
+	private String location_name;
 	
 	public Location(){	
 	}
 
-	public Location(String locationName) {
-		super();
-		
-		this.locationName = locationName;
-	} 
-
-	public int getLocationId() {
-		return locationId;
+	public Location(int location_id, String location_name) {
+		this.location_id = location_id;
+		this.location_name = location_name;
 	}
 
-	public void setLocationId(int locationId) {
-		this.locationId = locationId;
+	public int getLocation_id() {
+		return location_id;
 	}
 
-	public String getLocationName() {
-		return locationName;
+	public void setLocation_id(int location_id) {
+		this.location_id = location_id;
 	}
 
-	public void setLocationName(String locationName) {
-		this.locationName = locationName;
+	public String getLocation_name() {
+		return location_name;
 	}
-	
-	@Override
-	public String toString() {
-		return "LocationDto [locationId=" + locationId + ", locationName=" + locationName + "]";
-	}
-	
 
+	public void setLocation_name(String location_name) {
+		this.location_name = location_name;
+	}
 }

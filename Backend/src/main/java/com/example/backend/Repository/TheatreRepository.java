@@ -10,14 +10,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 public interface TheatreRepository extends JpaRepository<Theatre, Integer> {
-    @Query("select count(*) from Theatre where TheatreName  = ?1")
-	int findCountOfTheatre(String name);
-    @Query("select theatreId from Theatre where TheatreName = ?1")
+
+    List<Theatre> findTheatreByTheatreName(String name);
+
+    @Query("select theatreId from Theatre where theatreName = ?1")
     public int getTheatreId(String name);
 
-  
-    
-    @Query("from Theatre where locationid=?1 and movieid =?2")
-	public List<Theatre> findByMoviedandLocation(int locationid,int movieid);
+    @Query("from Theatre where locationId=?1 and MovieID =?2")
+	public List<Theatre> findByMovieIdandLocationId(int locationId,int movieid);
     
 }

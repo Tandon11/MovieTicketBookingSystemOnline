@@ -17,8 +17,9 @@ public class TheatreServiceImpl implements TheatreService {
         return theatreRepository.findAll();
     }
 
+    /*
     public boolean addTheatre(Theatre theatre) {
-        Integer count = theatreRepository.findCountOfTheatre(theatre.getTheatreName());
+        Integer count = theatreRepository.findTheatreByTheatreName(theatre.getTheatreName()).size();
         if(count > 0)
             return false;
         else {
@@ -26,11 +27,14 @@ public class TheatreServiceImpl implements TheatreService {
             return true;
         }
     }
+    */
 
+    public void addTheatre(Theatre theatre) {
+        theatreRepository.save(theatre);
+    }
    
-    public List<Theatre> findTheatreByMovieandLocation(int locationid,int movieid)
-    {
-    	List<Theatre> theatre=theatreRepository.findByMoviedandLocation(locationid,movieid);
+    public List<Theatre> findTheatreByMovieandLocation(int locationId,int movieid) {
+    	List<Theatre> theatre=theatreRepository.findByMovieIdandLocationId(locationId,movieid);
     	return theatre;
     }
 }

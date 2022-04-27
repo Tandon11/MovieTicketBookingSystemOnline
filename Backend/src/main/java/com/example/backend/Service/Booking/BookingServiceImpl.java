@@ -22,7 +22,6 @@ public class BookingServiceImpl implements BookingService {
     @Autowired
     private SeatService seatService;
 
- 
 
     @Autowired
     private ShowService showService;

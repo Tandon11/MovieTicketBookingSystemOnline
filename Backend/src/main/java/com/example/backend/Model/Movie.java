@@ -1,65 +1,35 @@
 package com.example.backend.Model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.websocket.OnError;
 
 @Entity
-@Table(name = "moviedetails")
 public class Movie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int movieId;
-	@Column(name="movieName")
+
+
 	private String movieName;
-	@Column(name="Genre")
-	private String Genre;
-	@Column(name="Summary")
-	private String Summary;
-	@Column(name="Review")
-	private String Review;
+	private String genre;
+	private String summary;
+	private String review;
+
+	@Column(columnDefinition = "Text")
+	private String image;
+
 	public Movie() {
 		super();
 	}
 
-	
-	
-	public Movie(String movieName, String genre, String summary, String review) {
-		super();
+	public Movie(int movieId, String movieName, String genre, String summary, String review, String image) {
+		this.movieId = movieId;
 		this.movieName = movieName;
-		Genre = genre;
-		Summary = summary;
-		Review = review;
+		this.genre = genre;
+		this.summary = summary;
+		this.review = review;
+		this.image = image;
 	}
-
-
-
-	public String getSummary() {
-		return Summary;
-	}
-
-
-
-	public void setSummary(String summary) {
-		Summary = summary;
-	}
-
-
-
-	public String getReview() {
-		return Review;
-	}
-
-
-
-	public void setReview(String review) {
-		Review = review;
-	}
-
-
 
 	public int getMovieId() {
 		return movieId;
@@ -78,11 +48,34 @@ public class Movie {
 	}
 
 	public String getGenre() {
-		return Genre;
+		return genre;
 	}
 
 	public void setGenre(String genre) {
-		Genre = genre;
+		this.genre = genre;
 	}
-	
+
+	public String getSummary() {
+		return summary;
+	}
+
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+
+	public String getReview() {
+		return review;
+	}
+
+	public void setReview(String review) {
+		this.review = review;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 }

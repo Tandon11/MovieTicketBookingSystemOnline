@@ -14,7 +14,7 @@ public class ShowController {
     @Autowired
     private ShowService showService;
 
-    @GetMapping("/shows")
+    @GetMapping("/shows/getAll")
     public List<Shows> listAll(){
         return showService.listAllShows();
     }
