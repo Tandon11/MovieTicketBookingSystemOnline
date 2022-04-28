@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public boolean checkUser(String email) {
-        return userRepository.existsById(email);
+        return userRepository.existsByEmail(email);
     }
 
     public boolean checkLogin(String email, String password) {

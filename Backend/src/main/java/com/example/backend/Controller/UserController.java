@@ -33,16 +33,6 @@ public class UserController {
         }
     }
 
-    @PostMapping("/user/signup")
-    public ResponseEntity<Boolean> addUser(@RequestBody User user) {
-        if(userService.checkUser(user.getEmail()) == false) {
-            userService.saveUser(user);
-            return new ResponseEntity<Boolean>(true, HttpStatus.OK);
-        }
-        else
-            return new ResponseEntity<Boolean>(false, HttpStatus.OK);
-    }
-
     @PostMapping("/user/getname/{email}")
     public String getUserFullname(@PathVariable String email) {
         String mail = userService.getUser(email).getFullname();
@@ -71,4 +61,15 @@ public class UserController {
     public boolean check(@RequestBody User user) {
         return userService.checkLogin(user.getEmail(), user.getPassword());
     }
+
+    @PostMapping("/user/signup")
+    public ResponseEntity<Boolean> addUser(@RequestBody User user) {
+        if(userService.checkUser(user.getEmail()) == false) {
+            userService.saveUser(user);
+            return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+        }
+        else
+            return new ResponseEntity<Boolean>(false, HttpStatus.OK);
+    }
+
 }

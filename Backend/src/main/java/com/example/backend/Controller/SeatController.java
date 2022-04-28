@@ -16,7 +16,7 @@ public class SeatController {
     @Autowired
     private SeatService seatService;
 
-    @GetMapping("/seat")
+    @GetMapping("/getAllSeats")
     public List<Seats> list() {
         return seatService.listAllSeats();
     }
