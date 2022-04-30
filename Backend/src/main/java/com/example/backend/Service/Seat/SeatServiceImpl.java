@@ -1,6 +1,7 @@
 package com.example.backend.Service.Seat;
 
 import com.example.backend.Model.Seats;
+import com.example.backend.Model.Shows;
 import com.example.backend.Repository.SeatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,5 +26,9 @@ public class SeatServiceImpl implements SeatService {
     public int getSeatCost(String seatType) {
         String cost = seatRepository.getSeatCost(seatType);
         return Integer.parseInt(cost);
+    }
+
+    public List<Seats> seatsById(Integer movieId, Integer locationId, Integer TheatreId) {
+        return seatRepository.seatByMovieandLocationId(movieId,locationId,TheatreId);
     }
 }

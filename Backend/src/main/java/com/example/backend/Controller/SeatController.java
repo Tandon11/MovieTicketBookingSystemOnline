@@ -1,6 +1,7 @@
 package com.example.backend.Controller;
 
 import com.example.backend.Model.Seats;
+import com.example.backend.Model.Shows;
 import com.example.backend.Service.Seat.SeatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,5 +25,10 @@ public class SeatController {
     @PostMapping("/seat/add")
     public ResponseEntity<Seats> add(@RequestBody Seats seat) {
         return new ResponseEntity<Seats>(seatService.addSeat(seat), HttpStatus.OK);
+    }
+
+    @GetMapping("/seats/getbyid/{MovieId}/{LocationId}/{theatreId}")
+    public List<Seats> seatsById(@PathVariable Integer MovieId, @PathVariable Integer LocationId, @PathVariable Integer theatreId) {
+        return seatService.seatsById(MovieId, LocationId, theatreId);
     }
 }

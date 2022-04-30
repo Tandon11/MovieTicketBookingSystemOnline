@@ -8,4 +8,5 @@ public interface SeatService {
     public List<Seats> listAllSeats();
     public Seats addSeat(Seats seat);
     public int getSeatCost(String seatType);
+    public List<Seats> seatsById(Integer movieId, Integer locationId, Integer TheatreId);
 }

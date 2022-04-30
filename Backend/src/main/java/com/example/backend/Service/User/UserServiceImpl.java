@@ -41,7 +41,6 @@ public class UserServiceImpl implements UserService {
             else
                 return false;
         }
-
         else
             return false;
     }

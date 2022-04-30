@@ -33,8 +33,8 @@ public class ShowServiceImpl implements ShowService {
             return false;
     }
 
-    public List<Shows> showsById(Integer TheatreId,Integer movieId) {
-        return showRepository.showByMovieandLocationId(TheatreId,movieId);
+    public List<Shows> showsById(int movieId, int locationId, int TheatreId) {
+        return showRepository.showByMovieandLocationId(movieId,locationId,TheatreId);
     }
 
    // public void updateShow(Booking booking) {

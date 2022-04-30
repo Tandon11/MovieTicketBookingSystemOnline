@@ -19,11 +19,13 @@ public class ShowController {
         return showService.listAllShows();
     }
 
-    @GetMapping("/shows/getbyid/{TheatreId}/{MovieId}")
-    public List<Shows> showById(@PathVariable Integer TheatreId,@PathVariable Integer MovieId){
-        return showService.showsById(TheatreId,MovieId);
-
+    @GetMapping("/shows/getbyid/{MovieId}/{LocationId}/{theatreId}")
+    public List<Shows> showById(@PathVariable int MovieId,@PathVariable int LocationId,@PathVariable int theatreId) {
+        List<Shows> shows = showService.showsById(MovieId,LocationId,theatreId);
+        System.out.println("Fetched Value :"+shows);
+        return shows;
     }
+
     @PostMapping("/shows/add")
     public boolean add(@RequestBody Shows show) {
         return showService.addShow(show);

@@ -11,8 +11,8 @@ import java.util.List;
 
 public interface ShowRepository extends JpaRepository<Shows, Integer> {
 
-    @Query("select s from Shows s where s.theatreId = ?1 and s.movieId=?2")
-    List<Shows> showByMovieandLocationId(Integer locationid,Integer MovieId);
+    @Query("from Shows where movieId = ?1 and locationId = ?2 and theatreId = ?3")
+    List<Shows> showByMovieandLocationId(int movieId, int LocationId, int theatreId);
 
    // @Modifying
   //  @Transactional
