@@ -1,0 +1,68 @@
+<div class="row mt-3  justify-content-center">
+    <div class="col-md-11 card" >
+
+        <hr>
+
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <form name="form" class="card m-2">
+
+                            <div class="col-md-12">
+                                <div class="m-1">
+                                    <div class="form-group">
+                                        <label ><h3 class="font-weight-bold m-0">Select Location:</h3></label>
+                                        <select class="form-control" [(ngModel)]="bookingDetails.locationId" name="locationId">
+                                            <option *ngFor='let location of locations' value="{{location.location_id}}">{{location.location_id}}. {{location.location_name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="m-1">
+                                    <div class="form-group">
+                                        <label ><h3 class="font-weight-bold m-0">Select Theatre:</h3></label>
+                                        <select class="form-control" [(ngModel)]="bookingDetails.theatreId" name="theatreId" (click) = "getTheatreByLocidAndMovid()">
+                                            <option *ngFor='let theatre of theatres' value="{{theatre.theatreId}}">{{theatre.theatreId}}. {{theatre.theatreName}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="m-1">
+                                    <div class="form-group">
+                                        <label ><h3 class="font-weight-bold m-0">Select Shows:</h3></label>
+                                        <select class="form-control" [(ngModel)]="bookingDetails.showId" name="showId" (click) = "getShowsById()">
+                                            <option *ngFor='let show of shows' value="{{show.showid}}">{{show.showid}}. {{show.showTime}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="m-1">
+                                    <div class="form-group">
+                                        <label ><h3 class="font-weight-bold m-0">Select Seats:</h3></label>
+                                        <select class="form-control" [(ngModel)]="bookingDetails.seatId" name="seatId" (click) = "getSeatsById()">
+                                            <option *ngFor='let seat of seats' value="{{seat.seatid}}">{{seat.seatid}}. {{seat.seat_type}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 mt-2 mb-2 ">
+                                <div class="m-1 mt-4">
+                                    <button class="button" type="submit" (click)="onSubmit()">Next</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
