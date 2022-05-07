@@ -15,6 +15,7 @@ import {Seat} from "../../Models/seat.model";
   templateUrl: './movie-booking.component.html',
   styleUrls: ['./movie-booking.component.css']
 })
+
 export class MovieBookingComponent implements OnInit {
 
   bookingDetails = {
@@ -31,6 +32,10 @@ export class MovieBookingComponent implements OnInit {
   theatres: Theatre[] = [];
   shows: Show[] = [];
   seats: Seat[] = [];
+  fetchedSeats: Seat[] = [];
+
+  selectedSeats: any = [];
+  seatStatus: boolean[] = [];
 
   constructor(private locationService: LocationService, private route: ActivatedRoute,
               private theatreService: TheatreService, private showService: ShowService,
@@ -92,8 +97,40 @@ export class MovieBookingComponent implements OnInit {
         response => {
           console.log(response);
           this.seats = response
+
+          console.log(this.seats.length);
+
+          for(let i = 0; i<this.seats.length; i++){
+            if(this.seats[i].status == 1)
+              this.seatStatus[i] = true;
+            else
+              this.seatStatus[i] = false;
+          }
         }
     );
   }
+
+  onCheckBoxClick(event: any, seatId: any) {
+    if(event.target.checked) {
+      this.selectedSeats.push(seatId);
+    } else {
+      let index = this.selectedSeats.indexOf(seatId);
+      if (index > -1) {
+        this.selectedSeats.splice(index, 1);
+      }
+    }
+    console.log(this.selectedSeats);
+  }
+
+  updateSeatStatus() {
+    console.log("Selected Seats :",this.selectedSeats);
+      this.seatService.updateSeatById(this.selectedSeats).subscribe(
+          response => {
+            if(response)
+              console.log("Seats Updated Successfully");
+            else
+              console.log("Something Went Wrong");
+          }
+      );}
 
 }

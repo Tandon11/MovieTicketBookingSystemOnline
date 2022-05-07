@@ -6,6 +6,7 @@ import com.example.backend.Repository.SeatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -31,4 +32,9 @@ public class SeatServiceImpl implements SeatService {
     public List<Seats> seatsById(Integer movieId, Integer locationId, Integer TheatreId) {
         return seatRepository.seatByMovieandLocationId(movieId,locationId,TheatreId);
     }
+
+    public Integer updateSeatStatus(Integer[] seatId) {
+        return seatRepository.updateSeats(Arrays.asList(seatId));
+    }
+
 }

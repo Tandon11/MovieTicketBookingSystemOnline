@@ -28,4 +28,10 @@ export class SeatService {
     return this.http.get<Seat[]>(`http://localhost:8090/seats/getbyid/${movieId}/${locationId}/${theatreId}`);
   }
 
+  updateSeatById(seatId: any) {
+    console.log('Update Function');
+    console.log(seatId);
+    return this.http.put(`http://localhost:8090/seats/updatebyid/${seatId}`, {});
+  }
+
 }

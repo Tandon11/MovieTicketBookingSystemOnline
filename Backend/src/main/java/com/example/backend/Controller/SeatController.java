@@ -31,4 +31,11 @@ public class SeatController {
     public List<Seats> seatsById(@PathVariable Integer MovieId, @PathVariable Integer LocationId, @PathVariable Integer theatreId) {
         return seatService.seatsById(MovieId, LocationId, theatreId);
     }
+
+    @PutMapping("/seats/updatebyid/{seatId}")
+    public ResponseEntity<Integer> updateSeatsById(@PathVariable Integer[] seatId) {
+         seatService.updateSeatStatus(seatId);
+         return new ResponseEntity<Integer>(1, HttpStatus.OK);
+    }
+
 }

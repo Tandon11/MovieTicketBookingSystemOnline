@@ -42,22 +42,117 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-12">
-                                <div class="m-1">
-                                    <div class="form-group">
-                                        <label ><h3 class="font-weight-bold m-0">Select Seats:</h3></label>
-                                        <select class="form-control" [(ngModel)]="bookingDetails.seatId" name="seatId" (click) = "getSeatsById()">
-                                            <option *ngFor='let seat of seats' value="{{seat.seatid}}">{{seat.seatid}}. {{seat.seat_type}}</option>
-                                        </select>
-                                    </div>
+                            <div class="col-md-12 mt-2 mb-2 ">
+                                <div class="m-1 mt-4">
+                                    <button class="button" type="submit" (click)="getSeatsById()">Load Seats</button>
                                 </div>
+                            </div>
+
+<!--                            <div class="col-md-12">-->
+<!--                                <div class="m-1">-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label ><h3 class="font-weight-bold m-0">Select Seats:</h3></label>-->
+<!--                                        <select class="form-control" [(ngModel)]="bookingDetails.seatId" name="seatId" (click) = "getSeatsById()">-->
+<!--                                            <option *ngFor='let seat of seats' value="{{seat.seatid}}">{{seat.seatid}}. {{seat.seat_type}}</option>-->
+<!--                                        </select>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+                            <!-- Seat Matrix -->
+                            <div class="theatre">
+                                <div class="screen-side">
+                                    <div class="screen">Screen</div>
+                                    <h3 class="select-text">Please select a seat</h3>
+                                </div>
+                                <div class="exit exit--front">
+                                </div>
+                                <ol class="cabin">
+                                    <li class="row row--1">
+                                        <ol class="seats" type="A">
+                                            <div>Platinum</div>
+                                            <li class="seat">
+                                                <input type="checkbox" id="1A" (click)="onCheckBoxClick($event, seats[0].seatid)" [disabled] = "seatStatus[0]"/>
+                                                <label for="1A">1A</label>
+                                            </li>
+                                            <li class="seat">
+                                                <input type="checkbox" id="1B" (click)="onCheckBoxClick($event, seats[1].seatid)" [disabled] = "seatStatus[1]"/>
+                                                <label for="1B">1B</label>
+                                            </li>
+                                            <li class="seat">
+                                                <input type="checkbox" id="1C" (click)="onCheckBoxClick($event, seats[2].seatid)" [disabled] = "seatStatus[2]"/>
+                                                <label for="1C">1C</label>
+                                            </li>
+                                            <li class="seat">
+                                                <input type="checkbox" id="1D" (click)="onCheckBoxClick($event, seats[3].seatid)" [disabled] = "seatStatus[3]"/>
+                                                <label for="1D">1D</label>
+                                            </li>
+                                            <li class="seat">
+                                                <input type="checkbox" id="1E" (click)="onCheckBoxClick($event, seats[4].seatid)" [disabled] = "seatStatus[4]"/>
+                                                <label for="1E">1E</label>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li class="row row--2">
+                                        <ol class="seats" type="A">
+                                            <div>Silver</div>
+                                            <li class="seat">
+                                                <input type="checkbox" id="2A" (click)="onCheckBoxClick($event, seats[5].seatid)" [disabled] = "seatStatus[5]"/>
+                                                <label for="2A">2A</label>
+                                            </li>
+                                            <li class="seat">
+                                                <input type="checkbox" id="2B" (click)="onCheckBoxClick($event, seats[6].seatid)" [disabled] = "seatStatus[6]"/>
+                                                <label for="2B">2B</label>
+                                            </li>
+                                            <li class="seat">
+                                                <input type="checkbox" id="2C" (click)="onCheckBoxClick($event, seats[7].seatid)" [disabled] = "seatStatus[7]"/>
+                                                <label for="2C">2C</label>
+                                            </li>
+                                            <li class="seat">
+                                                <input type="checkbox" id="2D" (click)="onCheckBoxClick($event, seats[8].seatid)" [disabled] = "seatStatus[8]"/>
+                                                <label for="2D">2D</label>
+                                            </li>
+                                            <li class="seat">
+                                                <input type="checkbox" id="2E" (click)="onCheckBoxClick($event, seats[9].seatid)" [disabled] = "seatStatus[9]"/>
+                                                <label for="2E">2E</label>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li class="row row--3">
+                                        <ol class="seats" type="A">
+                                            <div>Gold</div>
+                                            <li class="seat">
+                                                <input type="checkbox" id="3A" (click)="onCheckBoxClick($event, seats[10].seatid)" [disabled] = "seatStatus[10]"/>
+                                                <label for="3A">3A</label>
+                                            </li>
+                                            <li class="seat">
+                                                <input type="checkbox" id="3B" (click)="onCheckBoxClick($event, seats[11].seatid)" [disabled] = "seatStatus[11]"/>
+                                                <label for="3B">3B</label>
+                                            </li>
+                                            <li class="seat">
+                                                <input type="checkbox" id="3C" (click)="onCheckBoxClick($event, seats[12].seatid)" [disabled] = "seatStatus[12]"/>
+                                                <label for="3C">3C</label>
+                                            </li>
+                                            <li class="seat">
+                                                <input type="checkbox" id="3D" (click)="onCheckBoxClick($event, seats[13].seatid)" [disabled] = "seatStatus[13]"/>
+                                                <label for="3D">3D</label>
+                                            </li>
+                                            <li class="seat">
+                                                <input type="checkbox" id="3E" (click)="onCheckBoxClick($event, seats[14].seatid)" [disabled] = "seatStatus[14]"/>
+                                                <label for="3E">3E</label>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                </ol>
                             </div>
 
                             <div class="col-md-12 mt-2 mb-2 ">
                                 <div class="m-1 mt-4">
-                                    <button class="button" type="submit" (click)="onSubmit()">Next</button>
+                                    <button class="button" type="submit" (click)="updateSeatStatus()">Book</button>
                                 </div>
                             </div>
+
+
                         </form>
 
                     </div>

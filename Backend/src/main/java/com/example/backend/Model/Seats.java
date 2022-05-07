@@ -1,9 +1,6 @@
 package com.example.backend.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Seats {
@@ -14,6 +11,9 @@ public class Seats {
     private String seat_type;
     private String cost;
 
+    //@Column(columnDefinition = "integer default 0")
+    private Integer status = 0;
+
     private Integer theatreId;
     private Integer locationId;
     private Integer movieId;
@@ -21,10 +21,11 @@ public class Seats {
     public Seats() {
     }
 
-    public Seats(Integer seatid, String seat_type, String cost, Integer theatreId, Integer locationId, Integer movieId) {
+    public Seats(Integer seatid, String seat_type, String cost, Integer status, Integer theatreId, Integer locationId, Integer movieId) {
         this.seatid = seatid;
         this.seat_type = seat_type;
         this.cost = cost;
+        this.status = status;
         this.theatreId = theatreId;
         this.locationId = locationId;
         this.movieId = movieId;
@@ -52,6 +53,14 @@ public class Seats {
 
     public void setCost(String cost) {
         this.cost = cost;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public Integer getTheatreId() {
