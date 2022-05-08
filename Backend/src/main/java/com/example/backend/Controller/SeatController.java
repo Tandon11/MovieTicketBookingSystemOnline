@@ -35,7 +35,10 @@ public class SeatController {
     @PutMapping("/seats/updatebyid/{seatId}")
     public ResponseEntity<Integer> updateSeatsById(@PathVariable Integer[] seatId) {
          seatService.updateSeatStatus(seatId);
+         System.out.println("hi");
+         System.out.println("byei");
          return new ResponseEntity<Integer>(1, HttpStatus.OK);
+         
     }
 
 }

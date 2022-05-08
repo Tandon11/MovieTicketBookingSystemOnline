@@ -13,7 +13,7 @@ public class Seats {
 
     //@Column(columnDefinition = "integer default 0")
     private Integer status = 0;
-
+    private Integer showid;
     private Integer theatreId;
     private Integer locationId;
     private Integer movieId;
@@ -21,7 +21,7 @@ public class Seats {
     public Seats() {
     }
 
-    public Seats(Integer seatid, String seat_type, String cost, Integer status, Integer theatreId, Integer locationId, Integer movieId) {
+    public Seats(Integer seatid, String seat_type, String cost, Integer status, Integer theatreId, Integer locationId, Integer movieId,Integer showId) {
         this.seatid = seatid;
         this.seat_type = seat_type;
         this.cost = cost;
@@ -29,6 +29,7 @@ public class Seats {
         this.theatreId = theatreId;
         this.locationId = locationId;
         this.movieId = movieId;
+        this.showid=showid;
     }
 
     public Integer getSeatid() {
@@ -86,4 +87,13 @@ public class Seats {
     public void setMovieId(Integer movieId) {
         this.movieId = movieId;
     }
+
+	public Integer getShowid() {
+		return showid;
+	}
+
+	public void setShowid(Integer showid) {
+		this.showid = showid;
+	}
+    
 }
