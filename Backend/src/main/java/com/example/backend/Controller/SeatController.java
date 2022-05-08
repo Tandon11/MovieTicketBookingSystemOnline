@@ -37,6 +37,7 @@ public class SeatController {
          seatService.updateSeatStatus(seatId);
          System.out.println("hi");
          System.out.println("byei");
+         System.out.println("1");
          return new ResponseEntity<Integer>(1, HttpStatus.OK);
          
     }
