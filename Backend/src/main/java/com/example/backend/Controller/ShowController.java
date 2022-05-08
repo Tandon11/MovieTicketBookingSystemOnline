@@ -25,6 +25,12 @@ public class ShowController {
         System.out.println("Fetched Value :"+shows);
         return shows;
     }
+    @GetMapping("/shows/getbyShowID/{MoviedId}/{LocationId}/{theatreId}/{showid}")
+    public List<Shows> showByAllIds(@PathVariable int MovieId,@PathVariable int LocationId,@PathVariable int theatreId,@PathVariable int showid)
+    {
+    	 List<Shows> shows = showService.showsByAllIds(MovieId,LocationId,theatreId,showid);
+    	 return shows;
+    }
 
     @PostMapping("/shows/add")
     public boolean add(@RequestBody Shows show) {
