@@ -1,5 +1,6 @@
 package com.example.backend.Controller;
 
+import com.example.backend.DTO.BookingObject;
 import com.example.backend.Model.Booking;
 import com.example.backend.Service.Booking.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class BookingController {
     private BookingService bookingService;
 
     @PostMapping("/booking/add")
-    public Booking add(@RequestBody Booking booking) {
+    public Booking add(@RequestBody BookingObject booking) {
         return bookingService.addBooking(booking);
     }
 
@@ -29,10 +30,10 @@ public class BookingController {
         return bookingService.listByUser(email);
     }
 
-    @GetMapping("/booking/endBooking/{bookingid}")
-    public boolean endBooking(@PathVariable Integer bookingid) {
-        return bookingService.endBooking(bookingid);
-    }
+  //  @GetMapping("/booking/endBooking/{bookingid}")
+  //  public boolean endBooking(@PathVariable Integer bookingid) {
+   //     return bookingService.endBooking(bookingid);
+   // }
 
     @GetMapping("/booking/allBooking")
     public List<Booking> allBookings(){

@@ -6,7 +6,7 @@ private Integer MovieId;
 private Integer LocationId;
 private Integer TheatreId;
 private Integer ShowId;
-private Integer SeatId;
+private Integer[] SeatId;
 private Integer Count;
 public String getEmail() {
 	return email;
@@ -38,11 +38,9 @@ public Integer getShowId() {
 public void setShowId(Integer showId) {
 	ShowId = showId;
 }
-public Integer getSeatId() {
+
+public Integer[] getSeatId() {
 	return SeatId;
-}
-public void setSeatId(Integer seatId) {
-	SeatId = seatId;
 }
 public Integer getCount() {
 	return Count;
@@ -50,8 +48,11 @@ public Integer getCount() {
 public void setCount(Integer count) {
 	Count = count;
 }
+public void setSeatId(Integer[] seatId) {
+	SeatId = seatId;
+}
 public BookingObject(String email, Integer movieId, Integer locationId, Integer theatreId, Integer showId,
-		Integer seatId, Integer count) {
+		Integer[] seatId, Integer count) {
 	super();
 	this.email = email;
 	MovieId = movieId;
@@ -61,5 +62,6 @@ public BookingObject(String email, Integer movieId, Integer locationId, Integer 
 	SeatId = seatId;
 	Count = count;
 }
+
 
 }

@@ -29,8 +29,8 @@ public class SeatServiceImpl implements SeatService {
         return Integer.parseInt(cost);
     }
 
-    public List<Seats> seatsById(Integer movieId, Integer locationId, Integer TheatreId) {
-        return seatRepository.seatByMovieandLocationId(movieId,locationId,TheatreId);
+    public List<Seats> seatsById(Integer movieId, Integer locationId, Integer TheatreId,Integer showid) {
+        return seatRepository.seatByMovieandLocationId(movieId,locationId,TheatreId,showid);
     }
 
     public Integer updateSeatStatus(Integer[] seatId) {

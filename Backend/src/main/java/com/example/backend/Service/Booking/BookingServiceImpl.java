@@ -1,7 +1,9 @@
 package com.example.backend.Service.Booking;
 
+import com.example.backend.DTO.BookingObject;
 import com.example.backend.Model.Booking;
 import com.example.backend.Repository.BookingRepository;
+import com.example.backend.Repository.SeatRepository;
 import com.example.backend.Service.Seat.SeatService;
 import com.example.backend.Service.Show.ShowService;
 import com.example.backend.Service.Theatre.TheatreService;
@@ -21,19 +23,23 @@ public class BookingServiceImpl implements BookingService {
 
     @Autowired
     private SeatService seatService;
-
+    @Autowired
+    private SeatRepository seats;
 
     @Autowired
     private ShowService showService;
-
-    public Booking addBooking(Booking booking) {
-        int no_of_tickets = booking.getTicketCount();
-        int seatCost = seatService.getSeatCost(booking.getSeat_type());
-
-        int cost  = no_of_tickets * seatCost;
-        booking.setCost(String.valueOf(cost));
-        bookingRepository.save(booking);
-        return booking;
+    int amount=0;
+    public Booking addBooking(BookingObject booking) {
+      Integer count[]=booking.getSeatId();
+      for(int i=0;i<count.length;i++)
+      {
+    	  String cost=seats.getCostById(count[i]);
+    	 Integer price=Integer.parseInt(cost);
+    	 amount=amount+price;
+      }
+      Booking b1=new Booking(booking.getEmail(),booking.getMovieId(),booking.getLocationId(),booking.getTheatreId(),booking.getShowId(),booking.getSeatId(),count.length,amount);
+        bookingRepository.save(b1);
+        return b1;
     }
 
     public List<Booking> listAllBooking() {
@@ -44,21 +50,21 @@ public class BookingServiceImpl implements BookingService {
         return bookingRepository.listBookingByUser(email);
     }
 
-    public boolean endBooking(Integer bookingid) {
-        bookingRepository.endBooking(bookingid);
+   // public boolean endBooking(Integer bookingid) {
+      //  bookingRepository.endBooking(bookingid);
 
-        int ticketCount = bookingRepository.findById(bookingid).get().getTicketCount();
-        Booking currBooking = bookingRepository.findById((bookingid)).get();
-        currBooking.setTicketCount(ticketCount);
+      //  int ticketCount = bookingRepository.findById(bookingid).get().getTicketCount();
+      //  Booking currBooking = bookingRepository.findById((bookingid)).get();
+       // currBooking.setTicketCount(ticketCount);
 
-        int seatCost = seatService.getSeatCost(currBooking.getSeat_type());
-        int cost = seatCost * ticketCount;
-        currBooking.setCost(String.valueOf(cost));
+    //    int seatCost = seatService.getSeatCost(currBooking.getSeat_type());
+     //   int cost = seatCost * ticketCount;
+     //   currBooking.setCost(String.valueOf(cost));
 
-        bookingRepository.save(currBooking);
+      //  bookingRepository.save(currBooking);
      //   showService.rollbackShow(currBooking.getShowid());
-        return true;
-    }
+      //  return true;
+   // }
 
     public String[] getDate() {
         SimpleDateFormat sd = new SimpleDateFormat("dd-MM-yyyy");

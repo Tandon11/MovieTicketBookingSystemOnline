@@ -27,9 +27,9 @@ public class SeatController {
         return new ResponseEntity<Seats>(seatService.addSeat(seat), HttpStatus.OK);
     }
 
-    @GetMapping("/seats/getbyid/{MovieId}/{LocationId}/{theatreId}")
-    public List<Seats> seatsById(@PathVariable Integer MovieId, @PathVariable Integer LocationId, @PathVariable Integer theatreId) {
-        return seatService.seatsById(MovieId, LocationId, theatreId);
+    @GetMapping("/seats/getbyid/{MovieId}/{LocationId}/{theatreId}/{showid}")
+    public List<Seats> seatsById(@PathVariable Integer MovieId, @PathVariable Integer LocationId, @PathVariable Integer theatreId,@PathVariable Integer showid) {
+        return seatService.seatsById(MovieId, LocationId, theatreId,showid);
     }
 
     @PutMapping("/seats/updatebyid/{seatId}")

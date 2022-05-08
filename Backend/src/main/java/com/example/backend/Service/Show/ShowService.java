@@ -10,5 +10,6 @@ public interface ShowService {
     public boolean addShow(Shows show);
     public List<Shows> showsById(int movieId, int locationId, int TheatreId);
   //  public void updateShow(Booking booking);
-   // public void rollbackShow(String showid);
+   // public void rollbackShow(String showid);]
+    public List<Shows> showsByAllIds(int movieId, int locationId, int TheatreId,int showid);
 }
