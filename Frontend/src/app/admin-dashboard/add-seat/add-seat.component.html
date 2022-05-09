@@ -38,8 +38,19 @@
                                 <div class="m-1">
                                     <div class="form-group">
                                         <label ><h3 class="font-weight-bold m-0">Select Theatre:</h3></label>
-                                        <select class="form-control" formControlName="theatreId" [ngClass]="{ 'is-invalid':form.get('theatreId')?.touched && form.get('theatreId')?.invalid}" name="theatreId"  (click) = "getTheatreByLocidAndMovid()">
+                                        <select class="form-control" formControlName="theatreId" [ngClass]="{ 'is-invalid':form.get('theatreId')?.touched && form.get('theatreId')?.invalid}" name="theatreId"  (click) = "getTheatreByLocidAndMovid($event)">
                                             <option *ngFor='let theatre of theatres' value="{{theatre.theatreId}}">{{theatre.theatreId}}. {{theatre.theatreName}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="m-1">
+                                    <div class="form-group">
+                                        <label ><h3 class="font-weight-bold m-0">Select Show:</h3></label>
+                                        <select class="form-control" formControlName="showid" [ngClass]="{ 'is-invalid':form.get('showid')?.touched && form.get('showid')?.invalid}" name="showid" (click) = "getShowById()">
+                                            <option *ngFor='let show of shows' value="{{show.showid}}">{{show.showid}}. {{show.showTime}}</option>
                                         </select>
                                     </div>
                                 </div>

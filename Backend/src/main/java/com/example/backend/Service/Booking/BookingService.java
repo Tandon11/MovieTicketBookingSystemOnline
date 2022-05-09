@@ -6,7 +6,7 @@ import com.example.backend.Model.Booking;
 import java.util.List;
 
 public interface BookingService {
-    public Booking addBooking(BookingObject booking);
+    //public Booking addBooking(BookingObject booking);
     public List<Booking> listAllBooking();
     public List<Booking> listByUser(String email);
   //  public boolean endBooking(Integer bookingid);

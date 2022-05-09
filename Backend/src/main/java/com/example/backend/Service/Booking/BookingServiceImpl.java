@@ -29,18 +29,20 @@ public class BookingServiceImpl implements BookingService {
     @Autowired
     private ShowService showService;
     int amount=0;
+
+    /*
     public Booking addBooking(BookingObject booking) {
       Integer count[]=booking.getSeatId();
-      for(int i=0;i<count.length;i++)
-      {
-    	  String cost=seats.getCostById(count[i]);
-    	 Integer price=Integer.parseInt(cost);
-    	 amount=amount+price;
+      for(int i=0;i<count.length;i++) {
+          String cost=seats.getCostById(count[i]);
+          Integer price=Integer.parseInt(cost);
+          amount=amount+price;
       }
-      Booking b1=new Booking(booking.getEmail(),booking.getMovieId(),booking.getLocationId(),booking.getTheatreId(),booking.getShowId(),booking.getSeatId(),count.length,amount);
-        bookingRepository.save(b1);
-        return b1;
+      Booking b1 = new Booking(booking.getEmail(),booking.getMovieId(),booking.getLocationId(),booking.getTheatreId(),booking.getShowId(),booking.getSeatId(),count.length,amount);
+      bookingRepository.save(b1);
+      return b1;
     }
+    */
 
     public List<Booking> listAllBooking() {
         return bookingRepository.findAll();

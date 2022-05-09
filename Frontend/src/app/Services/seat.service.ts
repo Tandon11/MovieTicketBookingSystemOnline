@@ -24,8 +24,8 @@ export class SeatService {
     return this.http.get<Seat[]>("http://localhost:8090/getAllSeats");
   }
 
-  getSeatsById(theatreId: any, movieId: any, locationId: any) {
-    return this.http.get<Seat[]>(`http://localhost:8090/seats/getbyid/${movieId}/${locationId}/${theatreId}`);
+  getSeatsById(theatreId: any, movieId: any, locationId: any, showId: any) {
+    return this.http.get<Seat[]>(`http://localhost:8090/seats/getbyid/${movieId}/${locationId}/${theatreId}/${showId}`);
   }
 
   updateSeatById(seatId: any) {

@@ -7,6 +7,8 @@ import {Location} from "../../Models/location.model";
 import {Movie} from "../../Models/movie.model";
 import {MovieService} from "../../Services/movie.service";
 import {SeatService} from "../../Services/seat.service";
+import {ShowService} from "../../Services/show.service";
+import {Show} from "../../Models/show.model";
 
 @Component({
   selector: 'app-add-seat',
@@ -18,17 +20,21 @@ export class AddSeatComponent implements OnInit {
   theatres: Theatre[] = [];
   locations: Location[] = [];
   movies: Movie[] = [];
+  shows: Show[] = [];
 
   locId: any;
   movId: any;
+  theatreId: any;
 
   constructor(private theatreService: TheatreService, private locationService: LocationService,
-              private movieService: MovieService, private seatService: SeatService) { }
+              private movieService: MovieService, private seatService: SeatService,
+              private showService: ShowService) { }
 
   form = new FormGroup({
     movieId: new FormControl('', Validators.required),
     theatreId: new FormControl('', Validators.required),
     locationId: new FormControl('', Validators.required),
+    showid: new FormControl('', Validators.required),
     seat_type: new FormControl('', Validators.required),
     cost: new FormControl('', Validators.required)
   })
@@ -39,6 +45,7 @@ export class AddSeatComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.form.value.showid);
     this.seatService.addSeat(JSON.stringify(this.form.value)).subscribe(
         response => {
           if (response)
@@ -71,9 +78,20 @@ export class AddSeatComponent implements OnInit {
       this.movId = event.target.value;
   }
 
-  getTheatreByLocidAndMovid() {
+  getTheatreByLocidAndMovid(event: any) {
     this.theatreService.getTheatreById(this.locId, this.movId).subscribe(
-        response => this.theatres = response
+        (response) => {
+          this.theatres = response
+          if(event.target.value)
+            this.theatreId = event.target.value;
+            console.log(this.theatreId);
+        }
+    );
+  }
+
+  getShowById() {
+    this.showService.getShowById(this.theatreId, this.movId, this.locId).subscribe(
+        response => this.shows = response
     );
   }
 

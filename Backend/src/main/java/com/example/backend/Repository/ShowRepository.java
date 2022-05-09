@@ -25,6 +25,7 @@ public interface ShowRepository extends JpaRepository<Shows, Integer> {
  //   int rollbackShow(String showid);
 
     Boolean existsById(int showid);
+
     @Query("from Shows where movieId = ?1 and locationId = ?2 and theatreId = ?3 and showid=?4")
 	List<Shows> showByAllIds(int movieId, int locationId, int theatreId, int showid);
 

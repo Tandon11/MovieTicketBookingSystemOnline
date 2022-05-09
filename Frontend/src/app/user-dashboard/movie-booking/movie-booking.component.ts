@@ -93,13 +93,14 @@ export class MovieBookingComponent implements OnInit {
   }
 
   getSeatsById() {
-    this.seatService.getSeatsById(this.bookingDetails.theatreId, this.bookingDetails.movieId, this.bookingDetails.locationId).subscribe(
+    this.seatService.getSeatsById(this.bookingDetails.theatreId, this.bookingDetails.movieId, this.bookingDetails.locationId, this.bookingDetails.showId).subscribe(
         response => {
           console.log(response);
           this.seats = response
 
           console.log(this.seats.length);
 
+          //Assigns Booked(true) or Not Booked(false) to the seatStatus array
           for(let i = 0; i<this.seats.length; i++){
             if(this.seats[i].status == 1)
               this.seatStatus[i] = true;

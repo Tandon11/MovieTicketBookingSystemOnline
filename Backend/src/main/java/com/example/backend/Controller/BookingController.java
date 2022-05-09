@@ -15,11 +15,12 @@ public class BookingController {
     @Autowired
     private BookingService bookingService;
 
+    /*
     @PostMapping("/booking/add")
     public Booking add(@RequestBody BookingObject booking) {
         return bookingService.addBooking(booking);
     }
-
+    */
     @GetMapping("/booking")
     public List<Booking> listAll(){
         return bookingService.listAllBooking();

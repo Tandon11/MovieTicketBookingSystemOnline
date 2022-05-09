@@ -36,11 +36,9 @@ public class ShowServiceImpl implements ShowService {
     public List<Shows> showsById(int movieId, int locationId, int TheatreId) {
         return showRepository.showByMovieandLocationId(movieId,locationId,TheatreId);
     }
-    public List<Shows> showsByAllIds(int movieId, int locationId, int TheatreId,int showid)
-    {
+
+    public List<Shows> showsByAllIds(int movieId, int locationId, int TheatreId,int showid) {
 		return showRepository.showByAllIds(movieId,locationId,TheatreId,showid);
-		
-    	
     }
 
    // public void updateShow(Booking booking) {
