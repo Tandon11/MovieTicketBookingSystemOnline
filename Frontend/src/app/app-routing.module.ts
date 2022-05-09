@@ -13,6 +13,7 @@ import {UserLoginComponent} from "./user-login/user-login.component";
 import {UserDashboardComponent} from "./user-dashboard/user-dashboard.component";
 import {MovieListComponent} from "./user-dashboard/movie-list/movie-list.component";
 import {MovieBookingComponent} from "./user-dashboard/movie-booking/movie-booking.component";
+import {BookingComponent} from "./user-dashboard/booking/booking.component";
 
 const routes : Routes = [
   {
@@ -73,6 +74,10 @@ const routes : Routes = [
       {
         path: 'movieBooking/:movieId',
         component: MovieBookingComponent
+      },
+      {
+        path: 'Booking',
+        component: BookingComponent
       }
     ]
   }

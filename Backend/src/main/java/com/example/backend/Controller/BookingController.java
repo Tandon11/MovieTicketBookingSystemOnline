@@ -4,6 +4,7 @@ import com.example.backend.DTO.BookingObject;
 import com.example.backend.Model.Booking;
 import com.example.backend.Service.Booking.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,12 +16,14 @@ public class BookingController {
     @Autowired
     private BookingService bookingService;
 
-    /*
+
     @PostMapping("/booking/add")
-    public Booking add(@RequestBody BookingObject booking) {
-        return bookingService.addBooking(booking);
+    public ResponseEntity<Integer> add(@RequestBody Booking booking) {
+        System.out.println("booking: "+booking);
+        bookingService.addBooking(booking);
+        return ResponseEntity.ok(123);
     }
-    */
+
     @GetMapping("/booking")
     public List<Booking> listAll(){
         return bookingService.listAllBooking();

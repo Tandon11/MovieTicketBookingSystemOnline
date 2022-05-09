@@ -10,24 +10,25 @@ public class Booking {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int bookingId;
 	private String email;
-	private Integer MovieId;
-	private Integer LocationId;
-	private Integer TheatreId;
-	private Integer ShowId;
-	//@Column(columnDefinition = "integer[]")
-	//private Integer[] SeatId;
-	private Integer Count;
-	private Integer amount;
+	private int MovieId;
+	private int LocationId;
+	private int TheatreId;
+	private int ShowId;
+	private String seatId;
+	private int Count;
 
-	public Booking(int bookingId, String email, Integer movieId, Integer locationId, Integer theatreId, Integer showId, Integer count, Integer amount) {
-		this.bookingId = bookingId;
+	public Booking() {
+
+	}
+
+	public Booking(String email, int movieId, int locationId, int theatreId, int showId, String seatId, int count) {
 		this.email = email;
 		MovieId = movieId;
 		LocationId = locationId;
 		TheatreId = theatreId;
 		ShowId = showId;
+		this.seatId = seatId;
 		Count = count;
-		this.amount = amount;
 	}
 
 	public int getBookingId() {
@@ -46,51 +47,51 @@ public class Booking {
 		this.email = email;
 	}
 
-	public Integer getMovieId() {
+	public int getMovieId() {
 		return MovieId;
 	}
 
-	public void setMovieId(Integer movieId) {
+	public void setMovieId(int movieId) {
 		MovieId = movieId;
 	}
 
-	public Integer getLocationId() {
+	public int getLocationId() {
 		return LocationId;
 	}
 
-	public void setLocationId(Integer locationId) {
+	public void setLocationId(int locationId) {
 		LocationId = locationId;
 	}
 
-	public Integer getTheatreId() {
+	public int getTheatreId() {
 		return TheatreId;
 	}
 
-	public void setTheatreId(Integer theatreId) {
+	public void setTheatreId(int theatreId) {
 		TheatreId = theatreId;
 	}
 
-	public Integer getShowId() {
+	public int getShowId() {
 		return ShowId;
 	}
 
-	public void setShowId(Integer showId) {
+	public void setShowId(int showId) {
 		ShowId = showId;
 	}
 
-	public Integer getCount() {
+	public String getSeatId() {
+		return seatId;
+	}
+
+	public void setSeatId(String seatId) {
+		this.seatId = seatId;
+	}
+
+	public int getCount() {
 		return Count;
 	}
 
-	public void setCount(Integer count) {
+	public void setCount(int count) {
 		Count = count;
-	}
-
-	public Integer getAmount() {
-		return amount;
-	}
-
-	public void setAmount(Integer amount) {
-		this.amount = amount;
 	}
 }

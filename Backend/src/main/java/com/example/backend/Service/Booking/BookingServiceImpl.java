@@ -30,19 +30,34 @@ public class BookingServiceImpl implements BookingService {
     private ShowService showService;
     int amount=0;
 
-    /*
-    public Booking addBooking(BookingObject booking) {
-      Integer count[]=booking.getSeatId();
-      for(int i=0;i<count.length;i++) {
+    public void addBooking(Booking booking) {
+        String Seats = booking.getSeatId();
+        System.out.println("Seat Id's: "+Seats+"\n");
+
+        String[] strArray = Seats.split(",");
+        int[] seatId = new int[strArray.length];
+
+        for(int i = 0; i < strArray.length; i++) {
+            seatId[i] = Integer.parseInt(strArray[i]);
+        }
+
+        for(int i = 0; i < seatId.length; i++) {
+            System.out.println(seatId[i] + " ");
+        }
+
+        Integer count[];
+
+       /*
+        for(int i=0;i<count.length;i++) {
           String cost=seats.getCostById(count[i]);
           Integer price=Integer.parseInt(cost);
           amount=amount+price;
-      }
-      Booking b1 = new Booking(booking.getEmail(),booking.getMovieId(),booking.getLocationId(),booking.getTheatreId(),booking.getShowId(),booking.getSeatId(),count.length,amount);
-      bookingRepository.save(b1);
-      return b1;
+        }
+        */
+//        Booking b1 = new Booking(booking.getEmail(),booking.getMovieId(),booking.getLocationId(),booking.getTheatreId(),booking.getShowId(),booking.getSeatId(),count.length);
+//        bookingRepository.save(b1);
+//        return b1;
     }
-    */
 
     public List<Booking> listAllBooking() {
         return bookingRepository.findAll();
