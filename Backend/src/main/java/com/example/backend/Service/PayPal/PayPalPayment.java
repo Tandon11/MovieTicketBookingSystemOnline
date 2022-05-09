@@ -8,6 +8,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.backend.DTO.BookingObject;
+import com.example.backend.Repository.SeatRepository;
 import com.paypal.api.payments.Amount;
 import com.paypal.api.payments.Payer;
 import com.paypal.api.payments.Payment;
@@ -22,33 +24,37 @@ public class PayPalPayment {
 	
 	@Autowired
 	private APIContext apiContext;
-	
+    @Autowired
+    private SeatRepository seats;
 	
 	public Payment createPayment(
-			Double total, 
-			String currency, 
-			String method,
-			String intent,
-			String description, 
+			BookingObject booking ,
 			String cancelUrl, 
 			String successUrl) throws PayPalRESTException{
+		 Integer count[]=booking.getSeatId();
+		 int amount1=0;
+	      for(int i=0;i<count.length;i++) {
+	          String cost=seats.getCostById(count[i]);
+	          Integer price=Integer.parseInt(cost);
+	          amount1=amount1+price;
+	      }
 		Amount amount = new Amount();
-		amount.setCurrency(currency);
-		total = new BigDecimal(total).setScale(2, RoundingMode.HALF_UP).doubleValue();
-		amount.setTotal(String.format("%.2f", total));
+		amount.setCurrency("USD");
+		amount1 = (int) new BigDecimal(amount1).setScale(2, RoundingMode.HALF_UP).doubleValue();
+		amount.setTotal(String.format("%.2f", amount1));
 
 		Transaction transaction = new Transaction();
-		transaction.setDescription(description);
+		transaction.setDescription("booking payment");
 		transaction.setAmount(amount);
 
 		List transactions = new ArrayList<>();
 		transactions.add(transaction);
 
 		Payer payer = new Payer();
-		payer.setPaymentMethod(method.toString());
+		payer.setPaymentMethod("paypal");
 
 		Payment payment = new Payment();
-		payment.setIntent(intent.toString());
+		payment.setIntent("booking");
 		payment.setPayer(payer);  
 		payment.setTransactions(transactions);
 		RedirectUrls redirectUrls = new RedirectUrls();
@@ -66,4 +72,6 @@ public class PayPalPayment {
 		paymentExecute.setPayerId(payerId);
 		return payment.execute(apiContext, paymentExecute);
 	}
+
+
 }

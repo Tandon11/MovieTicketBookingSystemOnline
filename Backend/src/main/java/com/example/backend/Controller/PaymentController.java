@@ -5,7 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.backend.DTO.BookingObject;
 import com.example.backend.DTO.Order;
 import com.paypal.api.payments.Links;
 import com.paypal.api.payments.Payment;
@@ -26,10 +29,10 @@ public class PaymentController {
 	}
 
 	@PostMapping("/pay")
-	public String payment(@ModelAttribute("order") Order order) {
+	public String payment(@RequestBody BookingObject booking) {
 		try {
-			Payment payment = service.createPayment(order.getPrice(), order.getCurrency(), order.getMethod(),
-					order.getIntent(), order.getDescription(), "http://localhost:8090/" + CANCEL_URL,
+			Payment payment = service.createPayment(booking,
+					"http://localhost:8090/" + CANCEL_URL,
 					"http://localhost:8090/" + SUCCESS_URL);
 			for(Links link:payment.getLinks()) {
 				if(link.getRel().equals("approval_url")) {
