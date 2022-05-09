@@ -1,13 +1,13 @@
 package com.example.backend.DTO;
 
 public class BookingObject {
-private String email;
-private Integer MovieId;
-private Integer LocationId;
-private Integer TheatreId;
-private Integer ShowId;
-private String SeatId;
-private Integer Count;
+	private String email;
+	private int MovieId;
+	private int LocationId;
+	private int TheatreId;
+	private int ShowId;
+	private String seatId;
+	private int Count;
 public String getEmail() {
 	return email;
 }
@@ -40,7 +40,7 @@ public void setShowId(Integer showId) {
 }
 
 public String getSeatId() {
-	return SeatId;
+	return seatId;
 }
 public Integer getCount() {
 	return Count;
@@ -49,7 +49,7 @@ public void setCount(Integer count) {
 	Count = count;
 }
 public void setSeatId(String seatId) {
-	SeatId = seatId;
+	seatId = seatId;
 }
 public BookingObject(String email, Integer movieId, Integer locationId, Integer theatreId, Integer showId,
 		String seatId, Integer count) {
@@ -59,7 +59,7 @@ public BookingObject(String email, Integer movieId, Integer locationId, Integer 
 	LocationId = locationId;
 	TheatreId = theatreId;
 	ShowId = showId;
-	SeatId = seatId;
+	seatId = seatId;
 	Count = count;
 }
 

@@ -16,12 +16,13 @@ public class Booking {
 	private int ShowId;
 	private String seatId;
 	private int Count;
-
+	private int amount;
+    
 	public Booking() {
 
 	}
 
-	public Booking(String email, int movieId, int locationId, int theatreId, int showId, String seatId, int count) {
+	public Booking(String email, int movieId, int locationId, int theatreId, int showId, String seatId, int count,int amount) {
 		this.email = email;
 		MovieId = movieId;
 		LocationId = locationId;
@@ -29,6 +30,7 @@ public class Booking {
 		ShowId = showId;
 		this.seatId = seatId;
 		Count = count;
+		amount=amount;
 	}
 
 	public int getBookingId() {
@@ -94,4 +96,13 @@ public class Booking {
 	public void setCount(int count) {
 		Count = count;
 	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	
 }
