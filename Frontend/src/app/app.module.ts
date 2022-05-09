@@ -21,6 +21,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { MovieListComponent } from './user-dashboard/movie-list/movie-list.component';
 import { MovieBookingComponent } from './user-dashboard/movie-booking/movie-booking.component';
+import { BookingComponent } from './user-dashboard/booking/booking.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { MovieBookingComponent } from './user-dashboard/movie-booking/movie-book
     UserLoginComponent,
     UserDashboardComponent,
     MovieListComponent,
-    MovieBookingComponent
+    MovieBookingComponent,
+    BookingComponent
   ],
   imports: [
     BrowserModule,
