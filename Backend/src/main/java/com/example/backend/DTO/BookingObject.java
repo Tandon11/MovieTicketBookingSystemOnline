@@ -1,67 +1,81 @@
 package com.example.backend.DTO;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class BookingObject {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
 	private String email;
-	private int MovieId;
-	private int LocationId;
-	private int TheatreId;
-	private int ShowId;
-	private String seatId;
+	private String movieName;
+	private String locationName;
+	private String theatreName;
+	private String showTime;
 	private int Count;
-public String getEmail() {
-	return email;
-}
-public void setEmail(String email) {
-	this.email = email;
-}
-public Integer getMovieId() {
-	return MovieId;
-}
-public void setMovieId(Integer movieId) {
-	MovieId = movieId;
-}
-public Integer getLocationId() {
-	return LocationId;
-}
-public void setLocationId(Integer locationId) {
-	LocationId = locationId;
-}
-public Integer getTheatreId() {
-	return TheatreId;
-}
-public void setTheatreId(Integer theatreId) {
-	TheatreId = theatreId;
-}
-public Integer getShowId() {
-	return ShowId;
-}
-public void setShowId(Integer showId) {
-	ShowId = showId;
-}
 
-public String getSeatId() {
-	return seatId;
-}
-public Integer getCount() {
-	return Count;
-}
-public void setCount(Integer count) {
-	Count = count;
-}
-public void setSeatId(String seatId) {
-	seatId = seatId;
-}
-public BookingObject(String email, Integer movieId, Integer locationId, Integer theatreId, Integer showId,
-		String seatId, Integer count) {
-	super();
-	this.email = email;
-	MovieId = movieId;
-	LocationId = locationId;
-	TheatreId = theatreId;
-	ShowId = showId;
-	seatId = seatId;
-	Count = count;
-}
+	public BookingObject() {
 
+	}
 
+	public BookingObject(String email, String movieName, String locationName, String theatreName, String showTime, int count) {
+		this.email = email;
+		this.movieName = movieName;
+		this.locationName = locationName;
+		this.theatreName = theatreName;
+		this.showTime = showTime;
+		Count = count;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getMovieName() {
+		return movieName;
+	}
+
+	public void setMovieName(String movieName) {
+		this.movieName = movieName;
+	}
+
+	public String getLocationName() {
+		return locationName;
+	}
+
+	public void setLocationName(String locationName) {
+		this.locationName = locationName;
+	}
+
+	public String getTheatreName() {
+		return theatreName;
+	}
+
+	public void setTheatreName(String theatreName) {
+		this.theatreName = theatreName;
+	}
+
+	public String getShowTime() {
+		return showTime;
+	}
+
+	public void setShowTime(String showTime) {
+		this.showTime = showTime;
+	}
+
+	public int getCount() {
+		return Count;
+	}
+
+	public void setCount(int count) {
+		Count = count;
+	}
 }

@@ -21,12 +21,13 @@ export class MovieBookingComponent implements OnInit {
 
   bookingDetails = {
     email: '',
-    MovieId: 0,
-    LocationId: 0,
-    TheatreId: 0,
-    ShowId: 0,
+    movieId: 0,
+    locationId: 0,
+    theatreId: 0,
+    showId: 0,
     seatId: '',
-    Count: 0
+    count: 0,
+    amount: 0
   }
 
   temp: any;
@@ -38,20 +39,21 @@ export class MovieBookingComponent implements OnInit {
   selectedSeats: any = [];
   seatStatus: boolean[] = [];
   seatCount = 0;
+  ticketCost = 0;
 
   constructor(private locationService: LocationService, private route: ActivatedRoute,
               private theatreService: TheatreService, private showService: ShowService,
               private seatService: SeatService, private router: Router, private bookingService: BookingService) { }
 
   ngOnInit(): void {
-    this.bookingDetails.MovieId = this.route.snapshot.params['movieId'];
+    this.bookingDetails.movieId = this.route.snapshot.params['movieId'];
     this.loadLocations();
     this.getEmail();
     this.setEmail();
   }
 
   loadLocations() {
-    console.log(this.bookingDetails.MovieId);
+    console.log(this.bookingDetails.movieId);
     this.locationService.getLocation().subscribe(
         response => this.locations = response
     );
@@ -68,16 +70,16 @@ export class MovieBookingComponent implements OnInit {
 
   onSubmit() {
     console.log(this.bookingDetails.email);
-    console.log(this.bookingDetails.MovieId);
-    console.log(this.bookingDetails.LocationId);
-    console.log(this.bookingDetails.TheatreId);
-    console.log(this.bookingDetails.ShowId);
+    console.log(this.bookingDetails.movieId);
+    console.log(this.bookingDetails.locationId);
+    console.log(this.bookingDetails.theatreId);
+    console.log(this.bookingDetails.showId);
     console.log(this.bookingDetails.seatId);
   }
 
   getTheatreByLocidAndMovid() {
     console.log("I am Called")
-    this.theatreService.getTheatreById(this.bookingDetails.LocationId, this.bookingDetails.MovieId).subscribe(
+    this.theatreService.getTheatreById(this.bookingDetails.locationId, this.bookingDetails.movieId).subscribe(
         response => {
           this.theatres = response
           console.log("Response: ",response)
@@ -86,7 +88,7 @@ export class MovieBookingComponent implements OnInit {
   }
 
   getShowsById() {
-    this.showService.getShowById(this.bookingDetails.TheatreId, this.bookingDetails.MovieId, this.bookingDetails.LocationId).subscribe(
+    this.showService.getShowById(this.bookingDetails.theatreId, this.bookingDetails.movieId, this.bookingDetails.locationId).subscribe(
         response => {
           this.shows = response
           console.log(response)
@@ -95,12 +97,13 @@ export class MovieBookingComponent implements OnInit {
   }
 
   getSeatsById() {
-    this.seatService.getSeatsById(this.bookingDetails.TheatreId, this.bookingDetails.MovieId, this.bookingDetails.LocationId, this.bookingDetails.ShowId).subscribe(
+    this.seatService.getSeatsById(this.bookingDetails.theatreId, this.bookingDetails.movieId, this.bookingDetails.locationId, this.bookingDetails.showId).subscribe(
         response => {
           console.log(response);
           this.seats = response
 
           console.log(this.seats.length);
+          console.log(this.seats[0].cost);
 
           //Assigns Booked(true) or Not Booked(false) to the seatStatus array
           for(let i = 0; i<this.seats.length; i++){
@@ -113,19 +116,23 @@ export class MovieBookingComponent implements OnInit {
     );
   }
 
-  onCheckBoxClick(event: any, seatId: any) {
+  onCheckBoxClick(event: any, seatId: any, index: any) {
     if(event.target.checked) {
       this.selectedSeats.push(seatId);
       this.seatCount += 1;
+      this.ticketCost += Number(this.seats[index].cost);
     } else {
       let index = this.selectedSeats.indexOf(seatId);
       if (index > -1) {
         this.selectedSeats.splice(index, 1);
         this.seatCount -= 1;
+        this.ticketCost -= Number(this.seats[seatId].cost);
       }
     }
+
     this.bookingDetails.seatId = this.selectedSeats.map(String).toString();
-    this.bookingDetails.Count = this.seatCount;
+    this.bookingDetails.count = this.seatCount;
+    this.bookingDetails.amount = this.ticketCost;
     console.log(this.bookingDetails.seatId);
     // console.log(typeof(this.bookingDetails.seatId[0]));
     // console.log(typeof(this.bookingDetails.count));
@@ -142,7 +149,10 @@ export class MovieBookingComponent implements OnInit {
             // this.router.navigate(['/dashboard/Booking']);
             console.log(this.bookingDetails);
             this.bookingService.addBooking(this.bookingDetails).subscribe(
-                response=> console.log("Booking called")
+                response => {
+                  if(response)
+                    alert("Booking Successful");
+                }
             );
           }
       );}

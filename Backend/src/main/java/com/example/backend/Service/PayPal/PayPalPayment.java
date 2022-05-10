@@ -1,3 +1,4 @@
+/*
 package com.example.backend.Service.PayPal;
 
 import java.math.BigDecimal;
@@ -58,8 +59,8 @@ public class PayPalPayment {
 	      }
 		Amount amount = new Amount();
 		amount.setCurrency("USD");
-		amount1 = (int) new BigDecimal(amount1).setScale(2, RoundingMode.HALF_UP).doubleValue();
-		amount.setTotal(String.format("%.2f", amount1));
+//		amount1 = (int) new BigDecimal(amount1).setScale(2, RoundingMode.HALF_UP).doubleValue();
+		amount.setTotal(String.valueOf(amount1));
 
 		Transaction transaction = new Transaction();
 		transaction.setDescription("booking payment");
@@ -72,7 +73,7 @@ public class PayPalPayment {
 		payer.setPaymentMethod("paypal");
 
 		Payment payment = new Payment();
-		payment.setIntent("booking");
+		payment.setIntent("SALE");
 		payment.setPayer(payer);  
 		payment.setTransactions(transactions);
 		RedirectUrls redirectUrls = new RedirectUrls();
@@ -92,6 +93,5 @@ public class PayPalPayment {
 		
 		return payment.execute(apiContext, paymentExecute);
 	}
-
-
 }
+*/

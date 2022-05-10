@@ -2,11 +2,14 @@ package com.example.backend.Controller;
 
 import com.example.backend.DTO.BookingObject;
 import com.example.backend.Model.Booking;
+import com.example.backend.Response.BookingDetails;
 import com.example.backend.Service.Booking.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.print.Book;
 import java.util.List;
 
 @RestController
@@ -15,7 +18,6 @@ public class BookingController {
 
     @Autowired
     private BookingService bookingService;
-
 
     @PostMapping("/booking/add")
     public ResponseEntity<Integer> add(@RequestBody Booking booking) {
@@ -30,14 +32,12 @@ public class BookingController {
     }
 
     @GetMapping("booking/getByUser/{email}")
-    public List<Booking> listByUsers(@PathVariable String email){
-        return bookingService.listByUser(email);
-    }
+    public ResponseEntity<List<BookingDetails>> listByUsers(@PathVariable("email") String email){
+        List<BookingDetails> b1 = bookingService.listByUser(email);
 
-  //  @GetMapping("/booking/endBooking/{bookingid}")
-  //  public boolean endBooking(@PathVariable Integer bookingid) {
-   //     return bookingService.endBooking(bookingid);
-   // }
+        System.out.println("in controller"+b1.toString() + "\n");
+        return ResponseEntity.ok(b1);
+    }
 
     @GetMapping("/booking/allBooking")
     public List<Booking> allBookings(){

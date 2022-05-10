@@ -29,4 +29,7 @@ public interface ShowRepository extends JpaRepository<Shows, Integer> {
     @Query("from Shows where movieId = ?1 and locationId = ?2 and theatreId = ?3 and showid=?4")
 	List<Shows> showByAllIds(int movieId, int locationId, int theatreId, int showid);
 
+    @Query(value = "SELECT s.show_time FROM shows s WHERE s.showid = ?1", nativeQuery = true)
+    String findShowByShowTime(int showId);
+
 }

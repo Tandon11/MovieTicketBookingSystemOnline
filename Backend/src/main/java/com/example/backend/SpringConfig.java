@@ -1,3 +1,4 @@
+/*
 package com.example.backend;
 
 import org.springframework.context.annotation.Configuration;
@@ -6,7 +7,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-@EnableWebMvc
 public class SpringConfig implements WebMvcConfigurer {
 
     @Override
@@ -14,3 +14,4 @@ public class SpringConfig implements WebMvcConfigurer {
         registry.addMapping("/**").allowedOrigins("http://localhost:4200");
     }
 }
+*/

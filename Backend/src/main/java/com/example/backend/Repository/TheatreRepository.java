@@ -11,7 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface TheatreRepository extends JpaRepository<Theatre, Integer> {
 
-    List<Theatre> findTheatreByTheatreName(String name);
+    @Query(value = "SELECT t.theatre_name FROM theatre t WHERE t.theatre_id = ?1", nativeQuery = true)
+    String findTheatreByTheatreName(int theatreId);
 
     @Query("select theatreId from Theatre where theatreName = ?1")
     public int getTheatreId(String name);

@@ -1,12 +1,9 @@
+/*
 package com.example.backend.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.backend.DTO.BookingObject;
 import com.example.backend.DTO.Order;
@@ -15,6 +12,12 @@ import com.paypal.api.payments.Links;
 import com.paypal.api.payments.Payment;
 import com.paypal.base.rest.PayPalRESTException;
 import com.example.backend.Service.PayPal.PayPalPayment;
+
+@CrossOrigin(allowedHeaders = "", origins = "", exposedHeaders =
+		"Access-Control-Allow-Origin", methods = {
+		RequestMethod.POST, RequestMethod.GET, RequestMethod.PUT,
+		RequestMethod.DELETE, RequestMethod.HEAD,
+		RequestMethod.OPTIONS, RequestMethod.PATCH, RequestMethod.TRACE })
 @Controller
 public class PaymentController {
 
@@ -37,14 +40,14 @@ public class PaymentController {
 					"http://localhost:8090/" + SUCCESS_URL);
 			for(Links link:payment.getLinks()) {
 				if(link.getRel().equals("approval_url")) {
-					return "redirect:"+link.getHref();
+					return "forwardLink:"+link.getHref();
 				}
 			}
 			
 		} catch (PayPalRESTException e) {
-		
 			e.printStackTrace();
 		}
+
 		return "redirect:/";
 	}
 	
@@ -68,3 +71,4 @@ public class PaymentController {
 	    }
 
 }
+*/

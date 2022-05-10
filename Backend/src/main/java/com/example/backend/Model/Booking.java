@@ -7,30 +7,31 @@ import javax.websocket.OnError;
 public class Booking {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int bookingId;
 	private String email;
-	private int MovieId;
-	private int LocationId;
-	private int TheatreId;
-	private int ShowId;
+	private int movieId;
+	private int locationId;
+	private int theatreId;
+	private int showId;
 	private String seatId;
-	private int Count;
+	private int count;
 	private int amount;
     
 	public Booking() {
 
 	}
 
-	public Booking(String email, int movieId, int locationId, int theatreId, int showId, String seatId, int count,int amount) {
+	public Booking(int bookingId, String email, int movieId, int locationId, int theatreId, int showId, String seatId, int count, int amount) {
+		this.bookingId = bookingId;
 		this.email = email;
-		MovieId = movieId;
-		LocationId = locationId;
-		TheatreId = theatreId;
-		ShowId = showId;
+		this.movieId = movieId;
+		this.locationId = locationId;
+		this.theatreId = theatreId;
+		this.showId = showId;
 		this.seatId = seatId;
-		Count = count;
-		amount=amount;
+		this.count = count;
+		this.amount = amount;
 	}
 
 	public int getBookingId() {
@@ -50,35 +51,35 @@ public class Booking {
 	}
 
 	public int getMovieId() {
-		return MovieId;
+		return movieId;
 	}
 
 	public void setMovieId(int movieId) {
-		MovieId = movieId;
+		this.movieId = movieId;
 	}
 
 	public int getLocationId() {
-		return LocationId;
+		return locationId;
 	}
 
 	public void setLocationId(int locationId) {
-		LocationId = locationId;
+		this.locationId = locationId;
 	}
 
 	public int getTheatreId() {
-		return TheatreId;
+		return theatreId;
 	}
 
 	public void setTheatreId(int theatreId) {
-		TheatreId = theatreId;
+		this.theatreId = theatreId;
 	}
 
 	public int getShowId() {
-		return ShowId;
+		return showId;
 	}
 
 	public void setShowId(int showId) {
-		ShowId = showId;
+		this.showId = showId;
 	}
 
 	public String getSeatId() {
@@ -90,11 +91,11 @@ public class Booking {
 	}
 
 	public int getCount() {
-		return Count;
+		return count;
 	}
 
 	public void setCount(int count) {
-		Count = count;
+		this.count = count;
 	}
 
 	public int getAmount() {
@@ -104,5 +105,19 @@ public class Booking {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Booking{" +
+				"bookingId=" + bookingId +
+				", email='" + email + '\'' +
+				", movieId=" + movieId +
+				", locationId=" + locationId +
+				", theatreId=" + theatreId +
+				", showId=" + showId +
+				", seatId='" + seatId + '\'' +
+				", count=" + count +
+				", amount=" + amount +
+				'}';
+	}
 }
