@@ -5,11 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
 public class BookingObject {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String email;
 	private String movieName;

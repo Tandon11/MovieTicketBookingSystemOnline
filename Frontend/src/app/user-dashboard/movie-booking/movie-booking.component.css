@@ -8,10 +8,10 @@
     width: 220px;
     margin-top: 10px;
     color: white;
+    border-radius: 25px;
     height: 35px;
     background-color: #ff4f5a;
     font-weight: 900;
-    border-radius: 5px;
 }
 
 /* Seat Matrix CSS*/
@@ -32,9 +32,9 @@ body {
 .theatre {
     margin: 20px auto;
     width: 100%;
-    max-width: 350px;
+    max-width: 450px;
     border-radius: 5px;
-    background-color: #fff;
+    background-color: #eeeeee;
     padding: 20px 10px;
     box-shadow: 0px 0px 17px -4px #000;
 }
@@ -90,6 +90,7 @@ ol {
     flex: 0 0 25.28571%;
     padding: 5px;
     position: relative;
+    margin-left: 5px;
 }
 .seat:nth-child(3) {
     margin-right: 14.28571%;
@@ -125,15 +126,16 @@ ol {
 .seat label {
     display: block;
     position: relative;
+    margin-left: 3px;
     width: 100%;
     text-align: center;
     font-size: 14px;
     font-weight: bold;
     line-height: 1.5rem;
-    padding: 4px 0;
+    padding: 10px 3px;
     color: #fff;
     background: #26a69a;
-    border-radius: 2px;
+    border-radius: 12px;
     animation-duration: 300ms;
     animation-fill-mode: both;
     transition-duration: 300ms;
