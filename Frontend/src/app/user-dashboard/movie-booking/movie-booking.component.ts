@@ -126,7 +126,7 @@ export class MovieBookingComponent implements OnInit {
       if (index > -1) {
         this.selectedSeats.splice(index, 1);
         this.seatCount -= 1;
-        this.ticketCost -= Number(this.seats[seatId].cost);
+        this.ticketCost -= Number(this.seats[index].cost);
       }
     }
 
