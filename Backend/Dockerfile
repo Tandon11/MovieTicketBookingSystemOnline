@@ -1,3 +1,3 @@
-FROM openjdk:8
-ADD  target/Backend.jar Backend.jar
-ENTRYPOINT ["java","-jar","Backend.jar"]
+FROM openjdk:11
+ADD  target/Backend-0.0.1-SNAPSHOT.jar Backend-0.0.1-SNAPSHOT.jar
+ENTRYPOINT ["java","-jar","Backend-0.0.1-SNAPSHOT.jar"]
