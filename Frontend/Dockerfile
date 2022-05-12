@@ -32,6 +32,33 @@
 
 #CMD ["npm", "run", "start"]
 
+#FROM node
+#EXPOSE 4200
+#RUN mkdir -p /usr/src/app
+#WORKdir /usr/src/app
+#COPY package.json package.json
+
+#RUN npm install -g @angular/cli@latest
+#COPY . . 
+
+#CMD ["npm", "start"]
+
+# Stage 1
+
+
+#FROM node
+#EXPOSE 4300
+#RUN mkdir -p /app
+#WORKDIR /app
+
+#COPY . .
+
+#RUN npm install
+
+#RUN npm run build --prod
+
+#CMD ["npm","start"]
+
 FROM node
 EXPOSE 4200
 RUN mkdir -p /usr/src/app
