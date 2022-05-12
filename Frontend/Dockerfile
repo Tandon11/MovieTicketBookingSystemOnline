@@ -32,13 +32,20 @@
 
 #CMD ["npm", "run", "start"]
 
-FROM node
-EXPOSE 4200
-RUN mkdir -p /usr/src/app
-WORKdir /usr/src/app
-COPY package.json package.json
+# FROM node
+# EXPOSE 4200
+# RUN mkdir -p /usr/src/app
+# WORKdir /usr/src/app
+# COPY package.json package.json
 
-RUN npm install -g @angular/cli@latest
-COPY . . 
+# RUN npm install -g @angular/cli@latest
+# COPY . . 
 
-CMD ["npm", "start"]
+# CMD ["npm", "start"]
+
+
+FROM node:alpine
+WORKDIR /app 
+COPY ./ ./
+RUN npm i
+CMD ["npm", "run", "start"]
