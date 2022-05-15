@@ -5,8 +5,7 @@ services:
     ports:
       - "4200:4200"
     networks:
-      net_ubuntu:
-        ipv4_address: 172.28.1.5
+      - my_net
   servernode:
     image: tandon11/movieticketbackend:latest
     ports:
