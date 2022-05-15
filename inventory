@@ -1,2 +1,2 @@
 [Server]
-172.31.0.1 ansible_user = abhishek
+localhost ansible_user = abhishek
