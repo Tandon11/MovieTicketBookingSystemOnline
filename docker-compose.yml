@@ -17,14 +17,13 @@ services:
       MYSQL_HOST: "dbnode"
       MYSQL_USER: "root"
       MYSQL_PASSWORD: "password"
-      MYSQL_PORT: "3307"
+      MYSQL_PORT: "3306"
     networks: 
-      net_ubuntu:
-        ipv4_address: 172.28.1.6
+      - my_net
   dbnode:
     image: mysql 
     ports:
-     - "3307:3306"
+     - "3306:3306"
     volumes: 
       - /home/tandon_g/Documents/projects/DockerCompose/dbnode:/var/lib/mysql
     environment:
@@ -32,15 +31,9 @@ services:
       MYSQL_DATABASE: "MovieBookingSystem"
       MYSQL_PASSWORD: "password"
     networks:
-      net_ubuntu:
-        ipv4_address: 172.28.1.7
+      - my_net
 
 networks:
-  net_ubuntu:
-    ipam:
-      driver: default
-      config:
-      - subnet: 172.28.1.0/24
-
+  my_net:
 
     
