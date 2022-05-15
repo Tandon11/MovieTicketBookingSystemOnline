@@ -24,7 +24,7 @@ services:
     ports:
      - "3306:3306"
     volumes: 
-      - /home/tandon_g/Documents/projects/DockerCompose/dbnode:/var/lib/mysql
+      - /home/tandon_g/Documents/DockerCompose/dbnode:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: "password"
       MYSQL_DATABASE: "MovieBookingSystem"
