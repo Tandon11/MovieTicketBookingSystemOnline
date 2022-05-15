@@ -1,4 +1,4 @@
-version: "3.7"
+version: "2.4"
 services:
   clientnode:
     image: tandon11/movieticketfrontend:latest
@@ -9,12 +9,6 @@ services:
         ipv4_address: 172.28.1.5
   servernode:
     image: tandon11/movieticketbackend:latest
-    deploy:
-      restart_policy:
-        condition: on-failure
-        delay: 10s
-        max_attempts: 5
-        window: 120s
     ports:
       - "8090:8090"
     depends_on:
